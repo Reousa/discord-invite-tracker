@@ -1,0 +1,26 @@
+{
+  "name": "discordinvitetracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "dependencies": {
+    "bufferutil": "^3.0.3",
+    "discord.js": "^11.3.0",
+    "nodemon": "^1.14.11",
+    "uws": "^9.14.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Reousa/discordinvitetracker.git"
+  },
+  "author": "Karim Hamdy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Reousa/discordinvitetracker/issues"
+  },
+  "homepage": "https://github.com/Reousa/discordinvitetracker#readme"
+}
