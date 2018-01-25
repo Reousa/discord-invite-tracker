@@ -2,7 +2,7 @@
   "name": "discordinvitetracker",
   "version": "1.0.0",
   "description": "",
-  "main": "bot.js",
+  "main": "server.js",
   "dependencies": {
     "bufferutil": "^3.0.3",
     "discord.js": "^11.3.0",
