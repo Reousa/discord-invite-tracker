@@ -25,7 +25,7 @@ client.on('message', message => {
 
     if(command == 'help' || command == 'h')
     {
-        message.channel.send(`**Commands:**\n**!h** or **!help** - Displays the commands.\n**!ping** - Pings the server & Discord API.\n**!invites** *(optional: @ another user)* - Fetches your (or mentioned user's) invite count.`);
+        message.channel.send(`**Commands:**\n**!h** or **!help** - Displays the commands.\n**!ping** - Pings the server & Discord API.\n**!invites** *(optional: @ another user)* - Fetches your (or mentioned user's) count of invited users.`);
     }
 
     else if(command == 'invites' && message.guild.available)
