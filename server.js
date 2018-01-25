@@ -27,5 +27,6 @@ client.on('message', message => {
 });
 
 //DO NOT SHARE THIS TOKEN PUBLICLY!!
-var token = TOKEN_VAR;
+//Replace this code with your token.
+var token = process.env.TOKEN_VAR;
 client.login(token);
