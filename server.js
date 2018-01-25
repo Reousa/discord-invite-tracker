@@ -64,7 +64,7 @@ client.on('message', message => {
     else if (command == 'ping')
     {
         message.channel.send("Ping you say?")
-        .then(m => message.channel.send(`Expecting a pong?\nLatency is ${m.createdTimestamp - message.createdTimestamp}ms. \nAPI Latency is ${Math.round(client.ping)}ms. Have a good day sir!`))
+        .then(m => message.channel.send(`Well, pong!\nLatency is ${m.createdTimestamp - message.createdTimestamp}ms. \nAPI Latency is ${Math.round(client.ping)}ms. Have a good day sir!`))
         .catch(console.error);
 
     }
