@@ -108,6 +108,6 @@ client.on('message', message => {
 if(process.env.TOKEN_VAR != null)
     var token = process.env.TOKEN_VAR;
 else
-    var token = 'NDA2MjEyMjIwNTkxMDEzODg4.DUvqIg.Ro17OuXqVFbl1aP_zy4KmaOq5Pw';
+    var token = 'your-token';
 
 client.login(token);
