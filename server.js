@@ -23,9 +23,10 @@ client.on('message', message => {
     console.log(`Arguments: ${args}`);
     console.log(`Command: ${command}`);
 
-    if(command == 'help' || command == 'h')
+    if( (command == 'help' || command == 'h') && message.guild.available)
     {
-        message.channel.send(`**Commands:**\n**!h** or **!help** - Displays the commands.\n**!ping** - Pings the server & Discord API.\n**!invites** *(optional: @ another user)* - Fetches your (or mentioned user's) count of invited users.`);
+        message.channel.send(`**Commands:**\n**!h** or **!help** - Displays the commands.\n**!ping** - Pings the server & Discord API.\n**!invites** *(optional: @ another user)* - Fetches your (or mentioned user's) count of invited users.\n`
+                            +'**!mylinks** - *(optional: @ another user)* - Fetches your invite links & whether they are permenant.');
     }
 
     else if(command == 'invites' && message.guild.available)
@@ -61,7 +62,40 @@ client.on('message', message => {
         .catch(console.error);
     }
 
-    else if (command == 'ping')
+    else if(command == 'mylinks' && message.guild.available)
+    {
+        var targetUser = null;
+        var isAnotherUserLookup = false;
+        if(message.mentions.members.first() != null)
+        {
+            targetUser = message.mentions.members.first().user;
+            console.log(targetUser.user);
+            isAnotherUserLookup = true;
+        }
+        else
+            targetUser = message.author;
+
+        message.guild.fetchInvites()
+        .then
+        (invites =>
+            {
+                const userInvites = invites.array().filter(o => o.inviter.id === targetUser.id);
+                var userInviteLinksStr = '';
+                    for(var i=0; i < userInvites.length; i++)
+                    {
+                        var invite = userInvites[i];
+                        userInviteLinksStr += `Link: *discord.gg/${invite['code']}* - Permenant: *${!invite['temporary']}*\n`;
+                    }
+                    if(isAnotherUserLookup)
+                        message.channel.send(`User _${targetUser.username}_'s invite links are \n${userInviteLinksStr}.`);
+                    else
+                        message.reply(`Your invite links are \n${userInviteLinksStr} \nEnjoy!`);
+            }
+        )
+        .catch(console.error);
+    }
+
+    else if (command == 'ping' && message.guild.available)
     {
         message.channel.send("Ping you say?")
         .then(m => message.channel.send(`Well, pong!\nLatency is ${m.createdTimestamp - message.createdTimestamp}ms. \nAPI Latency is ${Math.round(client.ping)}ms. Have a good day sir!`))
