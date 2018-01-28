@@ -1,0 +1,47 @@
+{
+    "Id": "400776946906300417",
+    "MinimumInviteCountRoles":
+    [
+        {
+            "Id":"401218327080337429",
+            "Name": "The people",
+            "Value": 0
+        },
+        {
+            "Id":"401544527997042708",
+            "Name": "Activist",
+            "Value": 5
+        },
+        {
+            "Id":"401544533504032787",
+            "Name": "Mayor",
+            "Value": 20
+        },
+        {
+            "Id":"401208896724795402",
+            "Name": "Governor",
+            "Value": 40
+        },
+        {
+            "Id":"401208062712479765",
+            "Name": "Representative",
+            "Value": 65
+        },
+        {
+            "Id":"401544538260242432",
+            "Name": "Senator",
+            "Value": 100
+        },
+        {
+            "Id":"401209717835169792",
+            "Name": "Cabinet",
+            "Value": 150
+        },
+        {
+            "Id":"401208001291223040",
+            "Name": "Supreme Court",
+            "Value": 225
+        }
+    ]
+
+}
