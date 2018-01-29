@@ -210,7 +210,7 @@ function EpicVikingServerHandle(message)
                     for(var i=0; i < userInvites.length; i++)
                     {
                         var invite = userInvites[i];
-                        userInviteLinksStr += `Link: *discord.gg/${invite['code']}* - Permenant: *${!invite['temporary']}*\n`;
+                        userInviteLinksStr += `Link: *discord.gg/${invite['code']}* - Permenant: *${!invite['temporary']}*`;
                     }
                     if(isAnotherUserLookup)
                         message.channel.send(`User _${targetUser.username}_'s invite links are \n${userInviteLinksStr}.`);
