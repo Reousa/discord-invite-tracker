@@ -240,7 +240,7 @@ function EpicVikingServerHandle(message)
 function TerrysWorldServerHandle(message)
 {
     console.log('recieved message');
-    if(message.content.includes('https://discord.gg/'))
+    if(message.content.includes('discord.gg/'))
     {
         message.delete();
         message.reply('your message contained content that was marked as *spam*, please refer to the server rules.');
