@@ -2,7 +2,8 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require("./config.json");
 
-var EpicVikingServerConfig = require("./EpicVikingServer.config.json");
+var EpicVikingServerConfig = require("./config/EpicVikingServer.config.json");
+var TerrysWorldConfig = require("./config/TerrysWorld.config.json");
 
 client.on('ready', () => {
     console.log(`Bot has started, with ${client.users.size} users, in ${client.channels.size} channels of ${client.guilds.size} guilds.`);
@@ -12,19 +13,22 @@ client.on('ready', () => {
 
 //Lazy code, this wont be running on a production scale and im really bad with javascript.
 client.on('message', message => {
-//Ignore bot messages.
-    if(message.author.bot) return;
-//Ignore message if it doesnt start with prefix
-    if(message.content.indexOf(config.prefix) !== 0) return;
 
     if(message.guild.id == EpicVikingServerConfig.Id)
         EpicVikingServerHandle(message);
+    else if(message.guild.id == TerrysWorldConfig.Id)
+        TerrysWorldServerHandle(message);
     else
         NormalHandle(message);
 });
 
 function NormalHandle(message)
 {
+    //Ignore bot messages.
+    if(message.author.bot) return;
+    //Ignore message if it doesnt start with prefix
+    if(message.content.indexOf(config.prefix) !== 0) return;
+
     console.log("Recieved message: " + message.content);
 
     const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
@@ -117,7 +121,10 @@ function NormalHandle(message)
 
 function EpicVikingServerHandle(message)
 {
-    //Minimum invites to have that specific role.
+    //Ignore bot messages.
+    if(message.author.bot) return;
+    //Ignore message if it doesnt start with prefix
+    if(message.content.indexOf(config.prefix) !== 0) return;
 
 
     console.log("Recieved message: " + message.content);
@@ -230,12 +237,21 @@ function EpicVikingServerHandle(message)
     }
 }
 
+function TerrysWorldServerHandle(message)
+{
+    console.log('recieved message');
+    if(message.content.includes('https://discord.gg/'))
+    {
+        message.delete();
+        message.reply('your message contained content that was marked as *spam*, please refer to the server rules.');
+    }
+}
 
 //DO NOT SHARE THIS TOKEN PUBLICLY!!
 //Replace this code with your token.
 if(process.env.TOKEN_VAR != null)
     var token = process.env.TOKEN_VAR;
 else
-    var token = 'Your-token';
+    var token = 'your-token';
 
 client.login(token);
