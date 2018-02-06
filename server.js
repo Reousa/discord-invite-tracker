@@ -22,6 +22,11 @@ client.on('message', message => {
         NormalHandle(message);
 });
 
+client.on('messageUpdate', (message, messageNew) => {
+        if(message.guild.id == TerrysWorldConfig.Id)
+            TerrysWorldServerHandle(messageNew);
+});
+
 function NormalHandle(message)
 {
     //Ignore bot messages.
@@ -239,11 +244,10 @@ function EpicVikingServerHandle(message)
 
 function TerrysWorldServerHandle(message)
 {
-    console.log('recieved message');
-    if(message.content.includes('discord.gg/'))
+    if(message.content.includes('discord.gg'))
     {
         message.delete();
-        message.reply('your message contained content that was marked as *spam*, please refer to the server rules.');
+        message.reply('your message contained content that was flagged as *spam*, please refer to the server rules.');
     }
 }
 
